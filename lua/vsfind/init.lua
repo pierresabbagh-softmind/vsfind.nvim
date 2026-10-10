@@ -19,7 +19,7 @@ local function build_pattern(query)
 end
 
 local function render(count)
-  local toggle = function(on, label) return { ' ' .. label .. ' ', on and 'IncSearch' or 'Comment' } end
+  local toggle = function(on, label) return { ' ' .. label .. ' ', on and 'VsFindToggleOn' or 'Comment' } end
   local num = function(n) return n > MAX_COUNT and MAX_COUNT .. '+' or tostring(n) end
   local status
   if state.invalid then
@@ -116,6 +116,11 @@ function M.open()
     border = 'rounded',
     title = ' Find ',
   })
+  vim.api.nvim_set_hl(0, 'VsFindToggleOn', { link = 'IncSearch', default = true })
+  -- the input text matches its own search pattern; keep it plain
+  local whl = vim.wo[input].winhighlight
+  vim.wo[input].winhighlight = (whl ~= '' and whl .. ',' or '')
+    .. 'Search:NormalFloat,CurSearch:NormalFloat,IncSearch:NormalFloat'
   state = {
     win = win,
     buf = buf,
