@@ -23,7 +23,7 @@ It opens a small floating input at the top-right of the window, highlights match
 [vim.pack](https://neovim.io/doc/user/pack.html#vim.pack) (Neovim 0.12+):
 
 ```lua
-vim.pack.add({ 'https://github.com/pierresabbagh-softmind/vsfind.nvim' })
+vim.pack.add({ 'https://github.com/sabbaghpierre/vsfind.nvim' })
 vim.keymap.set({ 'n', 'x' }, '/', require('vsfind').open, { desc = 'Find in buffer' })
 ```
 
@@ -31,7 +31,7 @@ vim.keymap.set({ 'n', 'x' }, '/', require('vsfind').open, { desc = 'Find in buff
 
 ```lua
 {
-  'pierresabbagh-softmind/vsfind.nvim',
+  'sabbaghpierre/vsfind.nvim',
   keys = {
     { '/', function() require('vsfind').open() end, mode = { 'n', 'x' }, desc = 'Find in buffer' },
   },
